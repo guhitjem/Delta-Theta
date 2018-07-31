@@ -1,5 +1,3 @@
-# Delta-Theta
-
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -142,10 +140,10 @@ int main()
   */
 
   /*
-  Horizontal Line for the bottom sensor has points (0,0) to (-97.751,0.777) and (-0.38, -48.283) to (-98.12, -47.523) 
-  Legends: 
-  bottom sensor upper: M1 (slope), Theta1 (angle)
-  bottom sensor lower: M2 (slope), Theta2 (angle)
+    Horizontal Line for the bottom sensor has points (0,0) to (-97.751,0.777) and (-0.38, -48.283) to (-98.12, -47.523) 
+    Legends: 
+    bottom sensor upper: M1 (slope), Theta1 (angle)
+    bottom sensor lower: M2 (slope), Theta2 (angle)
   */
   cout << "Horizontal Lines for the bottom sensor" << endl;
   double m1HU; //slope bottom sensor upper
@@ -157,7 +155,7 @@ int main()
   cout << "Theta1: " <<  thetaHUBottom << endl;
 
   double m2HL; //bottom sensor lower
-  m2HL = (Y3 - Y4)/(X3 - X4); //bottom sensor 
+  m2HL = (Y3 - Y4)/(X3 - X4); //slop bottom sensor lower 
   cout << "M2: " << m2HL << endl;
 
   double thetaHLBottom;
@@ -165,15 +163,15 @@ int main()
   cout << "Theta2: " <<  thetaHLBottom << endl;
 
   //Deltatheta
-  double DeltaThetaBottom;
-  DeltaThetaBottom = abs(thetaHUBottom - thetaHLBottom);
-  cout<<"Delta Theta Bottom Sensor: "<< DeltaThetaBottom<< endl;
+  double DeltaThetaBottomH;
+  DeltaThetaBottomH = abs(thetaHUBottom - thetaHLBottom);
+  cout<<"Delta Theta Bottom Sensor: "<< DeltaThetaBottomH<< endl;
 
   /*
-  Horizontal Line for the top sensor has points  (-1.243, 0.008) to (-96.494, 0.81) and (-1.638, -48.293) to (-96.889, -47.503)
-  Legends: 
-  top sensor upper: M3 (slope), Theta3 (angle)
-  top sensor slower: M4 (slope), Theta4 (angle)
+    Horizontal Line for the top sensor has points  (-1.243, 0.008) to (-96.494, 0.81) and (-1.638, -48.293) to (-96.889, -47.503)
+    Legends: 
+    top sensor upper: M3 (slope), Theta3 (angle)
+    top sensor slower: M4 (slope), Theta4 (angle)
   */
   cout <<""<<endl;
   cout << "Horizontal Lines for the top sensor" << endl;
@@ -194,9 +192,69 @@ int main()
   thetaHLTop = atan(m1HL);
   cout << "Theta4: " <<  thetaHLTop << endl;
 
-  double DeltaThetaTop;
-  DeltaThetaTop = abs(thetaHUTop - thetaHLTop);
-  cout<<"Delta Theta Top Sensor: "<< DeltaThetaTop<< endl;
+  double DeltaThetaTopH;
+  DeltaThetaTopH = abs(thetaHUTop - thetaHLTop);
+  cout<<"Delta Theta Top Sensor: "<< DeltaThetaTopH << endl;
+
+  /*
+    Vertical Line for the bottom sensor has points (0,0) to (-0.38,-48.283) and (-97.751, 0.777) to (-98.12, -47.523) 
+    Legends: 
+    bottom sensor left: M1 (slope), Theta1 (angle)
+    bottom sensor right: M2 (slope), Theta2 (angle)
+  */
+  cout<< ""<<endl;
+  cout << "Vertical Lines for the bottom sensor" << endl;
+  double m1VL; 
+  m1VL = (Y3 - Y2)/(X3 - X2);
+  cout << "M1: "<< m1VL << endl;
+
+  double thetaVLBottom;
+  thetaVLBottom = atan(m1VL);
+  cout << "Theta1: " <<  thetaVLBottom << endl;
+
+  double m2VR;
+  m2VR = Y4/X4;  
+  cout << "M2: " << m2VR << endl;
+
+  double thetaVRBottom;
+  thetaVRBottom = atan(m2VR);
+  cout << "Theta2: " <<  thetaVRBottom << endl;
+
+  //Deltatheta
+  double DeltaThetaBottomV;
+  DeltaThetaBottomV = abs(thetaVLBottom - thetaVRBottom);
+  cout<<"Delta Theta Bottom Sensor: "<< DeltaThetaBottomV<< endl;
+
+
+  /*
+    Vertical Line for the top sensor  has points (-96.494,0.81) to (-96.889,-47.503) and (-1.243,0.008) to (-1.638,-48.293) 
+    Legends: 
+    top sensor left: M3 (slope), Theta3 (angle)
+    top sensor right: M4 (slope), Theta4 (angle)
+  */
+  cout << "" << endl;
+  cout << "Vertical Lines for the top sensor" << endl;
+
+  double m3VL; 
+  m3VL = (Y8 - Y7)/(X8 - X7);
+  cout << "M3: "<< m3VL << endl;
+
+  double thetaVLTop;
+  thetaVLTop = atan(m3VL);
+  cout << "Theta3: " <<  thetaVLTop << endl;
+
+  double m4VR;
+  m4VR = (Y9 - Y6)/(X9 - X6); //bottom sensor 
+  cout << "M4: " << m4VR << endl;
+
+  double thetaVRTop;
+  thetaVRTop = atan(m4VR);
+  cout << "Theta4: " <<  thetaVRTop << endl;
+
+  //Deltatheta
+  double DeltaThetaTopV;
+  DeltaThetaTopV = abs(thetaVLTop - thetaVRTop);
+  cout<<"Delta Theta Top Sensor: "<< DeltaThetaTopV<< endl;
 
   cout <<""<<endl;
   cout<<"Some other checks" << endl; //The difference between the outer marker from the inner marker is 1.25mm
@@ -220,3 +278,4 @@ int main()
   
   return 0;
 }
+
